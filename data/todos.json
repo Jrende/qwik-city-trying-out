@@ -1,0 +1,22 @@
+[
+    {
+      "id": 1,
+      "name": "Do the thing",
+      "done": false
+    },
+    {
+      "id": 2,
+      "name": "Clean",
+      "done": false
+    },
+    {
+      "id": 3,
+      "name": "Take a walk",
+      "done": true
+    },
+    {
+      "id": 4,
+      "name": "Take over the world",
+      "done": false
+    }
+]

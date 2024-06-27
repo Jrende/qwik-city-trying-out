@@ -1,0 +1,150 @@
+  * {
+    transition: background-color 200ms ease-in, color 200ms ease-in;
+  }
+
+  html {
+    --brand-light: var(--orange-6);
+
+    --text-1-light: var(--gray-8);
+    --text-2-light: var(--gray-7);
+
+    --surface-1-light: var(--gray-0);
+    --surface-2-light: var(--gray-1);
+    --surface-3-light: var(--gray-2);
+    --surface-4-light: var(--gray-3);
+
+    --border-1-light: var(--gray-8);
+  }
+
+
+  html {
+    --brand-dark: var(--orange-3);
+
+    --text-1-dark: var(--gray-3);
+    --text-2-dark: var(--gray-5);
+
+    --surface-1-dark: var(--gray-12);
+    --surface-2-dark: var(--gray-11);
+    --surface-3-dark: var(--gray-10);
+    --surface-4-dark: var(--gray-9);
+
+    --border-1-dark: var(--gray-6);
+  }
+
+
+  html {
+    --brand-dim: var(--orange-4);
+
+    --text-1-dim: var(--gray-3);
+    --text-2-dim: var(--gray-4);
+
+    --surface-1-dim: var(--gray-8);
+    --surface-2-dim: var(--gray-7);
+    --surface-3-dim: var(--gray-6);
+    --surface-4-dim: var(--gray-5);
+
+    --border-1-dim: var(--gray-3);
+  }
+
+  html {
+    --brand-purple: var(--purple-5);
+
+    --text-1-purple: var(--purple-9);
+    --text-2-purple: var(--purple-7);
+
+    --surface-1-purple: var(--purple-0);
+    --surface-2-purple: var(--purple-1);
+    --surface-3-purple: var(--purple-2);
+    --surface-4-purple: var(--purple-3);
+
+    --border-1-purple: var(--purple-9);
+  }
+
+  @mixin lightColors {
+    --brand: var(--brand-light);
+
+    --text-1: var(--text-1-light);
+    --text-2: var(--text-2-light);
+
+    --surface-1: var(--surface-1-light);
+    --surface-2: var(--surface-2-light);
+    --surface-3: var(--surface-3-light);
+    --surface-4: var(--surface-4-light);
+
+    --border-1: var(--border-1-light);
+  }
+
+  @mixin lessContrastColors() {
+    --brand: var(--brand-dim);
+
+    --text-1: var(--text-1-dim);
+    --text-2: var(--text-2-dim);
+
+    --surface-1: var(--surface-1-dim);
+    --surface-2: var(--surface-2-dim);
+    --surface-3: var(--surface-3-dim);
+    --surface-4: var(--surface-4-dim);
+
+    --border-1: var(--border-1-dim);
+  }
+
+  @mixin darkColors {
+
+    --brand: var(--brand-dark);
+
+    --text-1: var(--text-1-dark);
+    --text-2: var(--text-2-dark);
+
+    --surface-1: var(--surface-1-dark);
+    --surface-2: var(--surface-2-dark);
+    --surface-3: var(--surface-3-dark);
+    --surface-4: var(--surface-4-dark);
+
+    --border-1: var(--border-1-dark);
+  }
+
+  @mixin purpleColors {
+
+    --brand: var(--brand-purple);
+
+    --text-1: var(--text-1-purple);
+    --text-2: var(--text-2-purple);
+
+    --surface-1: var(--surface-1-purple);
+    --surface-2: var(--surface-2-purple);
+    --surface-3: var(--surface-3-purple);
+    --surface-4: var(--surface-4-purple);
+
+    --border-1: var(--border-1-purple);
+  }
+
+  :root {
+    @include lightColors();
+  }
+  :root [color-scheme="light"] {
+    @include lightColors();
+  }
+
+  @media (prefers-contrast: less) {
+    :root {
+      @include lessContrastColors();
+    }
+  }
+  :root [color-scheme="dim"] {
+    @include lessContrastColors();
+  }
+
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      @include darkColors();
+    }
+  }
+  :root [color-scheme="dark"] {
+    @include darkColors();
+  }
+
+  :root [color-scheme="purple"] {
+    @include purpleColors();
+  }
+

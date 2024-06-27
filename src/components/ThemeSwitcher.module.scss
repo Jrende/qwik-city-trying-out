@@ -1,0 +1,159 @@
+.select {
+  --width: 14rem;
+}
+
+.selectTrigger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  width: var(--width);
+  border-radius: 6px;
+  padding: 0 10px 0 16px;
+  font-size: 16px;
+  line-height: 1;
+  height: 40px;
+  outline: none;
+  background-color: var(--surface-1);
+  border: 1px solid var(--surface-4);
+  color: var(--text-1);
+  transition: border-color 250ms, color 250ms;
+}
+
+.selectTrigger:hover {
+  border-color: hsl(240 5% 65%);
+}
+
+.selectTrigger:focus-visible {
+  outline: 2px solid hsl(200 98% 39%);
+  outline-offset: 2px;
+}
+
+.selectTrigger[data-invalid] {
+  border-color: hsl(0 72% 51%);
+  color: hsl(0 72% 51%);
+}
+
+.selectValue {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.selectValue[data-placeholder-shown] {
+  color: hsl(240 4% 46%);
+}
+
+.selectIcon {
+  height: 20px;
+  width: 20px;
+  flex: 0 0 20px;
+}
+
+.selectDescription {
+  margin-top: 8px;
+  color: hsl(240 5% 26%);
+  font-size: 12px;
+  user-select: none;
+}
+
+.selectError-message {
+  margin-top: 8px;
+  color: hsl(0 72% 51%);
+  font-size: 12px;
+  user-select: none;
+}
+
+.selectContent {
+  background-color: white;
+  border-radius: 6px;
+  margin-top: 8px;
+  border: 1px solid hsl(240 6% 90%);
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  transform-origin: var(--kb-select-content-transform-origin);
+  animation: contentHide 250ms ease-in forwards;
+}
+
+.selectContent[data-open] {
+  animation: contentShow 250ms ease-out;
+}
+
+.selectListbox {
+  overflow-y: auto;
+  max-height: 360px;
+  min-width: var(--width);
+  padding: 0;
+  position: relative;
+  top: 0;
+  left: 0;
+}
+
+.selectItem {
+  text-transform: capitalize;
+  font-size: 16px;
+  line-height: 1;
+  color: hsl(240 4% 16%);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 32px;
+  padding: 0 8px;
+  position: relative;
+  user-select: none;
+  outline: none;
+}
+
+.selectItem[data-disabled] {
+  color: hsl(240 5% 65%);
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.selectItem[data-highlighted] {
+  outline: none;
+  background-color: hsl(200 98% 39%);
+  color: white;
+}
+
+.selectSection {
+  padding: 8px 0 0 8px;
+  font-size: 14px;
+  line-height: 32px;
+  color: hsl(240 4% 46%);
+}
+
+.selectItemIndicator {
+  height: 20px;
+  width: 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@keyframes contentShow {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes contentHide {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  to {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+}
+
+.displayValue {
+  text-transform: capitalize;
+}

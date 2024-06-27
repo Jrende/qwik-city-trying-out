@@ -1,0 +1,51 @@
+.checked {
+}
+.unchecked {
+}
+.todoItem {}
+
+.checkbox {
+  display: grid;
+  grid-column: 1 / span 2;
+  grid-template-columns: subgrid;
+  justify-items: start;
+
+
+  & input[type="checkbox"] {
+    display: none;
+  }
+}
+
+.checkboxControl {
+  grid-column: 1;
+  height: 20px;
+  width: 20px;
+  border-radius: 6px;
+  border: 1px solid var(--border-1);
+  background-color: var(--surface-1);
+}
+
+.checkboxInput {
+  grid-column: 1;
+}
+
+.checkboxInput:focus-visible+.checkboxControl {
+  outline: 2px solid hsl(200 98% 39%);
+  outline-offset: 2px;
+}
+
+.checkboxControl[data-checked] {
+  border-color: hsl(200 98% 39%);
+  background-color: hsl(200 98% 39%);
+  color: var(--text-1);
+}
+
+.checkboxLabel {
+  margin-left: 6px;
+  color: var(--text-1);
+  user-select: none;
+  font-size: 1.3rem;
+  grid-column: 2;
+  display: flex;
+  align-items: start;
+}
