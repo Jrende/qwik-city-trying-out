@@ -1,11 +1,11 @@
-import { type Signal, component$, useSignal, Slot, useStore } from '@builder.io/qwik';
+import { component$, Slot, useStore } from '@builder.io/qwik';
 import {
   useContextProvider,
   createContextId,
 } from '@builder.io/qwik';
 
 
-export type Theme = 'light'| 'dark'| 'dim'| 'purple';
+export type Theme = 'light' | 'dark' | 'dim' | 'purple';
 export interface ThemeStore {
   selectedTheme: Theme
   availableThemes: Theme[]
@@ -26,5 +26,5 @@ const ThemeContextProvider = component$(() => {
   );
 });
 
-export default themeContext;
+export default themeContext
 export { ThemeContextProvider }

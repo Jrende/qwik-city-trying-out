@@ -3,7 +3,7 @@ import { routeLoader$ } from "@builder.io/qwik-city";
 import type { RequestHandler } from "@builder.io/qwik-city";
 import themeContext from "~/components/context/ThemeContext";
 
-import global from "./styles.scss?inline";
+import global from "./styles/styles.scss?inline";
 import Navbar from "~/components/Navbar";
 import styles from './app.module.scss';
 

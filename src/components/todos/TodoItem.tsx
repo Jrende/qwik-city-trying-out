@@ -1,24 +1,42 @@
 import styles from './TodoItem.module.scss';
-import { RiCheckboxCircleLine, RiCheckboxCircleFill, RiCheckboxBlankCircleLine } from '../icons';
+import { RiCheckboxCircleFill, RiCheckboxBlankCircleLine } from '../icons';
+import { $ } from '@builder.io/qwik';
 import type { Todo } from '../../types';
-import type { QRL } from '@builder.io/qwik';
 import { component$ } from '@builder.io/qwik';
+import { Form } from '@builder.io/qwik-city';
+import { useToggleTodoAction, useUpdateTodoAction } from '~/server/actions';
 
 interface ChildProps {
   todo: Todo,
-  onChange: QRL<(todo: Todo) => void>
 }
-export default component$<ChildProps>(({ todo, onChange}) => {
+export default component$<ChildProps>(({ todo }) => {
+  const toggleTodo = useToggleTodoAction();
+  const updateTodo = useUpdateTodoAction();
+
+  const handleSubmitCompleted = $((event: any) => {
+    event.target.querySelector('[name="name"]').blur()
+  });
   return (
-    <label class={styles.checkbox}>
-      <input type="checkbox" checked={todo.done} onChange$={(ev) => onChange({ ...todo, done: (ev.target as HTMLInputElement).checked })} />
-      {todo.done && (
-        <div class={styles.checked}><RiCheckboxCircleFill /></div>
-      )}
-      {!todo.done && (
-        <div class={styles.unchecked}><RiCheckboxBlankCircleLine /></div>
-      )}
-      <div>{todo.name}</div>
-    </label>
+    <div class={styles.form}>
+      <Form action={toggleTodo}>
+        <button class={styles.checkboxControl}>
+          {todo.done && (
+            <RiCheckboxCircleFill />
+          )}
+          {!todo.done && (
+            <RiCheckboxBlankCircleLine />
+          )}
+        </button>
+        <input hidden name="id" type="text" value={todo.id} />
+        <input hidden name="done" type="text" value={`${todo.done}`} />
+      </Form>
+      <Form action={updateTodo} onSubmitCompleted$={handleSubmitCompleted}>
+        <label class={`${styles.checkbox} ${todo.done ? styles.checked : styles.unchecked}`}>
+          <input name="name" type="text" value={todo.name} class={styles.nameInput} />
+          <input name="id" type="text" hidden value={todo.id} />
+          <input type="submit" hidden />
+        </label>
+      </Form>
+    </div>
   )
 })
